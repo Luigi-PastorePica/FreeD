@@ -1,5 +1,7 @@
 # COMS4995
 
+![License-1](https://img.shields.io/github/license/Luigi-PastorePica/COMS4995)
+
 ## Motivation
 
 When managing debt, you usually want to save money. As a result, it is recommended to calculate which debt is costing you more money in the long term regarding accrued interest and pay that one more agressively. 
