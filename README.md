@@ -2,7 +2,10 @@
 
 Debt Growth Outlook Visualization and Repayment Decision Assitant
 
-![License-1](https://img.shields.io/github/license/Luigi-PastorePica/COMS4995)
+![GitHub](https://img.shields.io/github/license/Luigi-PastorePica/FreeD)
+
+![Repo's Page](https://github.com/Luigi-PastorePica/FreeD)
+
 
 ## FreeD in a nutshell (What is it?)
 
@@ -25,4 +28,4 @@ The idea is that the user can clearly see which debts are the fastest growing, h
 ## Some Features that Might be Included
 - Easily modify values for remaining principal, interest rate, minimum payment, budget available (these are variable, so this feature would be really useful).
 - Present the user with a table of debts/loans that can be ordered based on different criteria.
-- Draw a plot that shows the projected variation of the different balances based on current data.
+- Draw a plot, graph, or some other visualization that shows the projected change of the different balances (principal and interest) based on current data.
