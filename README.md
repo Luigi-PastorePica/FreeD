@@ -1,6 +1,13 @@
-# COMS4995
+# FreeD
+
+Debt Growth Outlook Visualization and Repayment Decision Assitant
 
 ![License-1](https://img.shields.io/github/license/Luigi-PastorePica/COMS4995)
+
+## FreeD in a nutshell (What is it?)
+
+A tool that leverages multiple visualizations to show at a glance the outlook for multiple debts. By having a visual representation based on the input data, the user can easily realize which debts would cost more in the long term, helping in the decision of which one to repay more agressively first.
+
 
 ## Motivation
 
