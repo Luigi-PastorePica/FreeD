@@ -4,7 +4,7 @@ Debt Growth Outlook Visualization and Repayment Decision Assitant
 
 ![GitHub](https://img.shields.io/github/license/Luigi-PastorePica/FreeD)
 
-![Repo's Page](https://github.com/Luigi-PastorePica/FreeD)
+[Repo's Page](https://github.com/Luigi-PastorePica/FreeD)
 
 
 ## FreeD in a nutshell (What is it?)
