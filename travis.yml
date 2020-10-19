@@ -1,6 +1,38 @@
 language: python
+# If you want to give names to different jobs, use the format right below.
+# For multiple jobs, place under include a - name, python and env options (only name has a "-" right before.
+# https://docs.travis-ci.com/user/customizing-the-build/#naming-jobs-within-matrices
+jobs:
+  include:
+    - name: "Unit Tests"
+      python: "3.8"
+#      env: TEST_SUITE=<name_of_suite>
+#  This allows to get build results as soon all jobs that are NOT allowed to fail finish.
+  fast_finish: true
+# This in case I want to allow a build to fail for some reason
+# https://docs.travis-ci.com/user/customizing-the-build/#jobs-that-are-allowed-to-fail
+#  allow_failures:
+#    - python: 3.8
+#      if: branch = <branch_name>
 python:
   - 3.8
 install:
   pip install -r requirements.txt
 script: pytest
+#Note: Caching is for language-specific dependencies. Large files that are slow to download do not benefit from caching.
+#Do NOT store sensitive data in cache because cache is available to ALL builds.
+#cache: pip
+#  directories:
+git:
+  depth: false
+#git:
+#  quiet: true
+#This is in case rates are limited or if the project needs to use Git Large File Storage
+#https://docs.travis-ci.com/user/customizing-the-build/#git-lfs:
+#before_install:
+#  - echo -e "machine github.com\n  login $GITHUB_TOKEN" > ~/.netrc
+#  - git lfs pull
+branches:
+  only:
+    - master
+    - /dev-.*/
