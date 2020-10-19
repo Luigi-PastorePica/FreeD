@@ -36,3 +36,4 @@ branches:
   only:
     - master
     - /dev-.*/
+    - CI # This is temporary
