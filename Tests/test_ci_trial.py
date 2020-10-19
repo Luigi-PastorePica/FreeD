@@ -3,6 +3,6 @@ def dummy_foo():
     return True
 
 
-def foo_test():
+def test_foo():
     assert dummy_foo() is True
 
