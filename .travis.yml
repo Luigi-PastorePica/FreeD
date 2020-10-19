@@ -18,7 +18,7 @@ python:
   - 3.8
 install:
   - pip install -r requirements.txt
-#script: pytest
+script: pytest
 #Note: Caching is for language-specific dependencies. Large files that are slow to download do not benefit from caching.
 #Do NOT store sensitive data in cache because cache is available to ALL builds.
 #cache: pip
