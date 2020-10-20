@@ -2,7 +2,7 @@
 
 Debt Growth Outlook Visualization and Repayment Decision Assitant
 
-![GitHub](https://img.shields.io/github/license/Luigi-PastorePica/FreeD)
+![GitHub](https://img.shields.io/github/license/Luigi-PastorePica/FreeD) ![Travis (.com)](https://img.shields.io/travis/com/Luigi-PastorePica/FreeD)
 
 [Repo's Page](https://github.com/Luigi-PastorePica/FreeD)
 
