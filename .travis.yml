@@ -16,12 +16,9 @@ jobs:
 #      if: branch = <branch_name>
 python:
   - 3.8
-before_install:
-  - "python setup.py install"
 install:
   - pip install -r requirements.txt
-  - pip install codecov
-script: python -m pytest
+script: pytest
 #Note: Caching is for language-specific dependencies. Large files that are slow to download do not benefit from caching.
 #Do NOT store sensitive data in cache because cache is available to ALL builds.
 #cache: pip
@@ -39,3 +36,4 @@ branches:
   only:
     - master
     - /dev-.*/
+    - CI # This is temporary
