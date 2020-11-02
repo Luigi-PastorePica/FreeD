@@ -1,11 +1,11 @@
-from src.debt_class import Debt
-
-debt1 = Debt(id_nbr=1, principal=100, rate=0.1, minimum=0, frequency=12)
+# from src.freed.debt_class import Debt
+from src.freed import debt_class
+debt1 = debt_class.Debt(id_nbr=1, principal=100, rate=0.1, minimum=0, frequency=12)
 LIST_COMPOUNDS1 = [100.00, 100.83, 101.67, 102.52, 103.38, 104.24, 105.11, 105.98, 106.86, 107.76, 108.65, 109.56, 110.47,
                    111.39, 112.32, 113.26, 114.20, 115.15, 116.11, 117.08, 118.06, 119.04, 120.03, 121.03, 122.04]
 PERIODS1 = len(LIST_COMPOUNDS1) - 1  # Should not count period 0
 
-debt2 = Debt(id_nbr=2, principal=100, rate=0.1, minimum=10, frequency=12)
+debt2 = debt_class.Debt(id_nbr=2, principal=100, rate=0.1, minimum=10, frequency=12)
 LIST_COMPOUNDS2 = [100.0, 90.83, 81.59, 72.27, 62.87, 53.40, 43.84, 34.21, 24.49, 14.70, 4.82, -5.14, -15.18,
                    -25.31, -35.52, -45.82, -56.20, -66.67, -77.22, -87.87, -98.60, -109.42, -120.33, -131.34, -142.43]
 PERIODS2 = len(LIST_COMPOUNDS2) - 1

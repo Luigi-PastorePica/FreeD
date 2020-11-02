@@ -1,3 +1,4 @@
 .pytest_cache
 Tests/__pycache__
 src/__pycache__/
+src/freed/__pycache__/
