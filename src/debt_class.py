@@ -17,20 +17,25 @@ class Debt:
 
         return balance_list
 
-    def calculate_next_period(self, current_principal, minimum = 0):
-        next_principal = current_principal * (1 + self.rate / self.frequency) - minimum
+    def calculate_next_principal(self, current_principal, current_payment = 0):
+        next_principal = current_principal * (1 + self.rate / self.frequency) - current_payment
         return next_principal
 
     def list_minimum_payments(self, current_principal, periods, minimum = 0):
         balance_list = [float(current_principal)]
-        for period in range(periods + 1):
-            next_period_principal = self.calculate_next_period(current_principal, minimum)
+        for period in range(periods):
+            next_period_principal = self.calculate_next_principal(current_principal, minimum)
             balance_list.append(next_period_principal)
             current_principal = next_period_principal
 
         return balance_list
 
 
+# # TODO Convert this into a test
 debt1 = Debt(1, 100, 0.1, 0, 12)
-print("Compounds: " + str(debt1.list_compounds(24)))
-print("Balances: " + str(debt1.list_minimum_payments(100, 24, 0)))
+# print("Compounds:")
+# for value in debt1.list_compounds(24):
+#     print(value)
+print("Balances:")
+for value in debt1.list_minimum_payments(100, 24, 10):
+    print(value)
