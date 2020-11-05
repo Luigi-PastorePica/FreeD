@@ -18,3 +18,8 @@ comment:
   layout: "reach,diff,flags,files,footer"
   behavior: default
   require_changes: no
+
+ignore:
+  - setup.py
+#  - Tests/*
+  - Tests/**/*  # In case I add sub-directories
