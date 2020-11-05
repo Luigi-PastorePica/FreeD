@@ -21,5 +21,6 @@ comment:
 
 ignore:
   - setup.py
+  - Tests/
 #  - Tests/*
   - Tests/**/*  # In case I add sub-directories
