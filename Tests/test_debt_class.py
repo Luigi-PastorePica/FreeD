@@ -14,81 +14,79 @@ LIST_COMPOUNDS2_2 = [100.0, 90.83, 81.59, 72.27, 62.87, 53.40, 43.84, 34.21, 24.
 PERIODS2_2 = len(LIST_COMPOUNDS2_2)
 
 
-def test_calculate_compound():
-    abs_tolerance = 0.01
-    passed = True
-    for period in range(PERIODS1):
-        calculated_compound = debt1.calculate_compound(period)
-        sample_compound = LIST_COMPOUNDS1[period]
-        # print(calculated_compound)
-        # print(sample_compound)
-        # print(abs(round(calculated_compound - sample_compound, 2)))
-        if abs(round(calculated_compound - sample_compound, 2)) > abs_tolerance:
-            passed = False
-            break
-    assert passed is True
-
-
-def test_list_compounds():
-    abs_tolerance = 0.01
-    passed = True
-    compounds_list = debt1.list_compounds(PERIODS1)
-    if len(compounds_list) == len(LIST_COMPOUNDS1):
-        for i, j in enumerate(compounds_list):
-            if abs(round(j - LIST_COMPOUNDS1[i], 2)) > abs_tolerance:
+class TestDebtClass:
+    def test_calculate_compound(self):
+        abs_tolerance = 0.01
+        passed = True
+        for period in range(PERIODS1):
+            calculated_compound = debt1.calculate_compound(period)
+            sample_compound = LIST_COMPOUNDS1[period]
+            # print(calculated_compound)
+            # print(sample_compound)
+            # print(abs(round(calculated_compound - sample_compound, 2)))
+            if abs(round(calculated_compound - sample_compound, 2)) > abs_tolerance:
                 passed = False
                 break
-    else:
-        passed = False
+        assert passed is True
 
-    assert passed is True
-
-
-def test_calculate_next_principal():
-    abs_tolerance = 0.01
-    passed = True
-
-    current_principal = debt1.principal
-    minimum = debt1.minimum
-    for index in range(PERIODS1):
-        next_principal = debt1.calculate_next_principal(current_principal, minimum)
-        # print("current " + str(current_principal))
-        # print("next " + str(next_principal))
-        # print("LIST_COMPOUNDS1[" + str(index) + " + 1] " + str(LIST_COMPOUNDS1[index+1]))
-        if abs(round(next_principal - LIST_COMPOUNDS1[index+1], 2)) > abs_tolerance:
+    def test_list_compounds(self):
+        abs_tolerance = 0.01
+        passed = True
+        compounds_list = debt1.list_compounds(PERIODS1)
+        if len(compounds_list) == len(LIST_COMPOUNDS1):
+            for i, j in enumerate(compounds_list):
+                if abs(round(j - LIST_COMPOUNDS1[i], 2)) > abs_tolerance:
+                    passed = False
+                    break
+        else:
             passed = False
-            break
-        current_principal = next_principal
 
-    if passed is True:
-        current_principal = debt2.principal
-        minimum = debt2.minimum
-        for index in range(PERIODS2):
-            next_principal = debt2.calculate_next_principal(current_principal, minimum)
-            if abs(round(next_principal - LIST_COMPOUNDS2[index+1], 2)) > abs_tolerance:
+        assert passed is True
+
+    def test_calculate_next_principal(self):
+        abs_tolerance = 0.01
+        passed = True
+
+        current_principal = debt1.principal
+        minimum = debt1.minimum
+        for index in range(PERIODS1):
+            next_principal = debt1.calculate_next_principal(current_principal, minimum)
+            # print("current " + str(current_principal))
+            # print("next " + str(next_principal))
+            # print("LIST_COMPOUNDS1[" + str(index) + " + 1] " + str(LIST_COMPOUNDS1[index+1]))
+            if abs(round(next_principal - LIST_COMPOUNDS1[index+1], 2)) > abs_tolerance:
                 passed = False
                 break
             current_principal = next_principal
 
-    assert passed is True
+        if passed is True:
+            current_principal = debt2.principal
+            minimum = debt2.minimum
+            for index in range(PERIODS2):
+                next_principal = debt2.calculate_next_principal(current_principal, minimum)
+                if abs(round(next_principal - LIST_COMPOUNDS2[index+1], 2)) > abs_tolerance:
+                    passed = False
+                    break
+                current_principal = next_principal
 
+        assert passed is True
 
-def test_list_minimum_payments():
+    def test_list_minimum_payments(self):
 
-    abs_tolerance = 0.01
-    passed = True
-    compounds_wo_min = debt2.list_minimum_payments(debt2.principal, PERIODS2_2, debt2.minimum)
-    if len(compounds_wo_min) == len(LIST_COMPOUNDS2_2) and compounds_wo_min[-1] == 0.0:
-        for i, j in enumerate(compounds_wo_min):
-            # print("compounds_wo_min[ " + str(i) + "] = " + str(compounds_wo_min[i]))
-            # print("LIST_COMPOUNDS2_2[ " + str(i) + "] = " + str(LIST_COMPOUNDS2_2[i]))
-            if abs(round(j - LIST_COMPOUNDS2_2[i], 2)) > abs_tolerance:
-                passed = False
-                break
-    else:
-        passed = False
+        abs_tolerance = 0.01
+        passed = True
+        compounds_wo_min = debt2.list_minimum_payments(debt2.principal, PERIODS2_2, debt2.minimum)
+        if len(compounds_wo_min) == len(LIST_COMPOUNDS2_2) and compounds_wo_min[-1] == 0.0:
+            for i, j in enumerate(compounds_wo_min):
+                # print("compounds_wo_min[ " + str(i) + "] = " + str(compounds_wo_min[i]))
+                # print("LIST_COMPOUNDS2_2[ " + str(i) + "] = " + str(LIST_COMPOUNDS2_2[i]))
+                if abs(round(j - LIST_COMPOUNDS2_2[i], 2)) > abs_tolerance:
+                    passed = False
+                    break
+        else:
+            passed = False
 
-    assert passed is True
+        assert passed is True
 
 
 # test_calculate_compound()

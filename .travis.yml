@@ -21,7 +21,12 @@ before_install:
 install:
   - pip install -r requirements.txt
   - pip install codecov
-script: python -m pytest
+  - pip install pytest-cov
+#  - pip install -e ./src/freed  # Workaround to make coverage.py generate reports. Might not be needed anymore
+script:
+  - python -m pytest  # This places current directory in sys.path. Running pytest alone does not -> ModuleNotFoundError
+  - python -m pytest --cov=./
+
 #Note: Caching is for language-specific dependencies. Large files that are slow to download do not benefit from caching.
 #Do NOT store sensitive data in cache because cache is available to ALL builds.
 #cache: pip
@@ -39,3 +44,6 @@ branches:
   only:
     - master
     - /dev-.*/
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
