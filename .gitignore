@@ -5,3 +5,6 @@ src/freed/__pycache__/
 .coverage
 coverage.xml
 src.egg-info/
+docs/source/_static
+docs/source/_templates
+docs/build
