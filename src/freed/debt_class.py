@@ -1,10 +1,13 @@
-class Debt:
+class Debt(object):
     def __init__(self, id_nbr, principal, rate, minimum, frequency=12):
         self.id = id_nbr
         self.principal = principal
         self.rate = rate
         self.minimum = minimum
-        self.frequency = frequency
+        if frequency > 0:
+            self.frequency = frequency
+        else:
+            raise ValueError("Frequency should be higher than 0. Value given is {}.\n".format(frequency))
 
     def calculate_compound(self, periods):
         new_principal = self.principal * (1 + self.rate / self.frequency) ** periods
@@ -34,3 +37,7 @@ class Debt:
             current_principal = next_period_principal
 
         return balance_list
+
+    def __repr__(self):
+        return "{{id: {}, principal: {}, rate: {}, minimum: {}, frequency: {}}}".\
+            format(self.id, self.principal, self.rate, self.minimum, self.frequency)
