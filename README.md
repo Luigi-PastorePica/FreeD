@@ -1,4 +1,5 @@
 # FreeD
+## College project. Development currently suspended.
 
 Debt Growth Outlook Visualization and Repayment Decision Assitant
 
