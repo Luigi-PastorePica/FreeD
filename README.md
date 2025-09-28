@@ -1,4 +1,6 @@
 # FreeD
+## College project. Development currently suspended.
+Travis CI checks removed due to elimination of free plan tier for OSS. A new equivalent CI/CD tool will be required.
 
 Debt Growth Outlook Visualization and Repayment Decision Assitant
 
