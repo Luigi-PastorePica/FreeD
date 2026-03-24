@@ -57,7 +57,7 @@ Quick steps (VS Code)
 ```Bash
 docker run --rm -it -v "$(pwd)":/workspaces/FreeD -w /workspaces/FreeD freed-dev /bin/bash
 ```
-6. Use the integrated terminal and run tests or the app:
+6. Use the Docker app's integrated terminal and run tests or the app:
 ```bash
 # from inside the container terminal (or in the mounted workspace)
 cd /workspaces/FreeD
