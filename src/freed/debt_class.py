@@ -1,3 +1,6 @@
+from http.cookiejar import MONTHS
+
+
 class Debt:
     def __init__(self, id_nbr, principal, rate, minimum, frequency=12):
         self.id = id_nbr
@@ -34,3 +37,18 @@ class Debt:
             current_principal = next_period_principal
 
         return balance_list
+
+if __name__ == "__main__":
+    MONTHS = 24
+    debt1 = Debt(1, 1_000, 0.3, 100, 12)
+
+    print(f"Compound over next {MONTHS} months.")
+    for compound_val in debt1.list_compounds(MONTHS):
+        print(compound_val)
+
+    print(f"\nNext Principal")
+    print(debt1.calculate_next_principal(100, 0))
+
+    print(f"\nList minimum payments over {MONTHS} months")
+    for minimum in debt1.list_minimum_payments(1000, MONTHS, 100):
+        print(minimum)
