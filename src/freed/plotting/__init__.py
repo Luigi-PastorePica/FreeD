@@ -1,1 +1,1 @@
-# Sub-package forCharting / matplotlib (or similar) integration.
+# Sub-package for charting / matplotlib (or similar) integration.
