@@ -1,34 +1,33 @@
-from http.cookiejar import MONTHS
-
-
 class Debt:
-    def __init__(self, id_nbr, principal, rate, minimum, frequency=12):
-        self.id = id_nbr
-        self.principal = principal
-        self.rate = rate
-        self.minimum = minimum
-        self.frequency = frequency
+    def __init__(self, id_nbr: int, principal: float, rate: float, minimum: float, frequency: int=12) -> None:
+        self.id: int = id_nbr
+        self.principal: float = principal
+        self.rate: float = rate
+        self.minimum: float = minimum
+        self.frequency: float = frequency
 
-    def calculate_compound(self, periods):
-        new_principal = self.principal * (1 + self.rate / self.frequency) ** periods
+    def calculate_compound(self, periods: int) -> float:
+        new_principal: float = self.principal * (1 + self.rate / self.frequency) ** periods
         return new_principal
 
-    def list_compounds(self, periods):
-        balance_list = []
+    def list_compounds(self, periods: int) -> list[float]:
+        balance_list: list[float] = []
+        period: int
         for period in range(periods + 1):
             balance_list.append(self.calculate_compound(period))
 
         return balance_list
 
-    def calculate_next_principal(self, current_principal, current_payment = 0):
-        next_principal = current_principal * (1 + self.rate / self.frequency) - current_payment
+    def calculate_next_principal(self, current_principal: float, current_payment: float = 0.0) -> float:
+        next_principal: float = current_principal * (1 + self.rate / self.frequency) - current_payment
         return next_principal
 
-    def list_minimum_payments(self, current_principal, periods, minimum):
-        balance_list = [float(current_principal)]
-        next_period_principal = current_principal
+    def list_minimum_payments(self, current_principal: float, periods: int, minimum: float):
+        balance_list: list[float] = [float(current_principal)]
+        next_period_principal: float = current_principal
+        period: int
         for period in range(periods):
-            next_period_principal = self.calculate_next_principal(current_principal, minimum)
+            next_period_principal: float = self.calculate_next_principal(current_principal, minimum)
             if next_period_principal < 0.0:
                 balance_list.append(0.0)
                 break
