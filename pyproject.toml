@@ -11,7 +11,7 @@ dependencies = [
 
 [tool.pyrefly]
 search-path = [
-    "Freed/src/",
-    "Freed/Tests/"
+    "src/",
+    "Tests/"
 ]
 project-includes = ["src", "Tests"]
