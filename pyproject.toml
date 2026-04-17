@@ -6,7 +6,7 @@ requires-python = ">=3.14"
 dependencies = [
     "matplotlib>=3.10.8",
     "pyrefly>=0.60.2",
-    "pytest>=9.0.2",
+    "pytest>=9.0.3",
 ]
 
 [tool.pyrefly]
