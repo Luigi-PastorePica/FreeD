@@ -17,22 +17,20 @@ class TestDebtClass:
     def test_calculate_compound(self) -> None:
         abs_tolerance = 0.01
         passed = True
-        period: int
+
         for period in range(PERIODS1):
-            calculated_compound = debt1.calculate_compound(period)
-            sample_compound = LIST_COMPOUNDS1[period]
-            # print(calculated_compound)
-            # print(sample_compound)
-            # print(abs(round(calculated_compound - sample_compound, 2)))
+            calculated_compound: float = debt1.calculate_compound(period)
+            sample_compound: float = LIST_COMPOUNDS1[period]
+
             if abs(round(calculated_compound - sample_compound, 2)) > abs_tolerance:
                 passed = False
                 break
         assert passed is True
 
     def test_list_compounds(self) -> None:
-        abs_tolerance = 0.01
-        passed = True
-        compounds_list = debt1.list_compounds(PERIODS1)
+        abs_tolerance: float = 0.01
+        passed: bool = True
+        compounds_list: list[float] = debt1.list_compounds(PERIODS1)
         if len(compounds_list) == len(LIST_COMPOUNDS1):
             for i, j in enumerate(compounds_list):
                 if abs(round(j - LIST_COMPOUNDS1[i], 2)) > abs_tolerance:
@@ -49,22 +47,20 @@ class TestDebtClass:
 
         current_principal: float = debt1.principal
         minimum: float = debt1.minimum
-        index: int
+
         for index in range(PERIODS1):
-            next_principal = debt1.calculate_next_principal(current_principal, minimum)
-            # print("current " + str(current_principal))
-            # print("next " + str(next_principal))
-            # print("LIST_COMPOUNDS1[" + str(index) + " + 1] " + str(LIST_COMPOUNDS1[index+1]))
+            next_principal: float = debt1.calculate_next_principal(current_principal, minimum)
+
             if abs(round(next_principal - LIST_COMPOUNDS1[index+1], 2)) > abs_tolerance:
                 passed = False
                 break
             current_principal = next_principal
 
         if passed is True:
-            current_principal = debt2.principal
-            minimum = debt2.minimum
+            current_principal: float = debt2.principal
+            minimum: float = debt2.minimum
             for index in range(PERIODS2):
-                next_principal = debt2.calculate_next_principal(current_principal, minimum)
+                next_principal: float = debt2.calculate_next_principal(current_principal, minimum)
                 if abs(round(next_principal - LIST_COMPOUNDS2[index+1], 2)) > abs_tolerance:
                     passed = False
                     break
@@ -78,11 +74,8 @@ class TestDebtClass:
         passed: bool = True
         compounds_wo_min: list[float] = debt2.list_minimum_payments(debt2.principal, PERIODS2_2, debt2.minimum)
         if len(compounds_wo_min) == len(LIST_COMPOUNDS2_2) and compounds_wo_min[-1] == 0.0:
-            i: int
-            j: float
+
             for i, j in enumerate(compounds_wo_min):
-                # print("compounds_wo_min[ " + str(i) + "] = " + str(compounds_wo_min[i]))
-                # print("LIST_COMPOUNDS2_2[ " + str(i) + "] = " + str(LIST_COMPOUNDS2_2[i]))
                 if abs(round(j - LIST_COMPOUNDS2_2[i], 2)) > abs_tolerance:
                     passed = False
                     break
