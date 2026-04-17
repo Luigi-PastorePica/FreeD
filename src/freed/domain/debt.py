@@ -12,7 +12,7 @@ class Debt:
 
     def list_compounds(self, periods: int) -> list[float]:
         balance_list: list[float] = []
-        period: int
+
         for period in range(periods + 1):
             balance_list.append(self.calculate_compound(period))
 
@@ -22,10 +22,10 @@ class Debt:
         next_principal: float = current_principal * (1 + self.rate / self.frequency) - current_payment
         return next_principal
 
-    def list_minimum_payments(self, current_principal: float, periods: int, minimum: float):
+    def list_minimum_payments(self, current_principal: float, periods: int, minimum: float) -> list[float]:
         balance_list: list[float] = [float(current_principal)]
         next_period_principal: float = current_principal
-        period: int
+
         for period in range(periods):
             next_period_principal: float = self.calculate_next_principal(current_principal, minimum)
             if next_period_principal < 0.0:
